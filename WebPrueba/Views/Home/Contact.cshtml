@@ -1,0 +1,104 @@
+﻿@model WebPrueba.Models.ContactoModel
+@{
+    /**/
+
+    ViewBag.Title = "Contáctenos";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+@using (Html.BeginForm("Contact", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+<div class="form-horizontal">
+    <div class="row">
+        <div class="col-md-6">
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Número Identificación</label>
+                <div class="col-sm-10">
+                    @Html.EditorFor(model => model.IDENTIFICACION, new { htmlAttributes = new { @class = "form-control", placeholder = "Número Identificación", @maxlength = "20" } })
+                    @Html.ValidationMessageFor(model => model.IDENTIFICACION, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Nombre completo</label>
+                <div class="col-sm-10">
+                    @Html.EditorFor(model => model.NOMBRE, new { htmlAttributes = new { @class = "form-control", placeholder = "Nombre completo", @maxlength = "250" } })
+                    @Html.ValidationMessageFor(model => model.NOMBRE, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Email</label>
+                <div class="col-sm-10">
+                    @Html.EditorFor(model => model.EMAIL, new { htmlAttributes = new { @class = "form-control", placeholder = "Email", @maxlength = "200" } })
+                    @Html.ValidationMessageFor(model => model.EMAIL, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Celular</label>
+                <div class="col-sm-10">
+                    @Html.EditorFor(model => model.CELULAR, new { htmlAttributes = new { @class = "form-control", placeholder = "Celular", @maxlength = "20" } })
+                    @Html.ValidationMessageFor(model => model.CELULAR, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Descripción</label>
+                <div class="col-sm-10">
+                    @Html.TextAreaFor(model => model.DESCRIPCION, new { @class = "form-control text", @rows = "10", @cols = "50" })
+                    @Html.ValidationMessageFor(model => model.DESCRIPCION, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+
+        </div>
+       
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <div class="col-sm-10">
+                      <input type="submit" value="Guardar" name="Guardar" class="btn btn-primary" id="btnGuardar" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <address>
+
+        <abbr title="celular">CELULAR:</abbr>
+        3223623729
+    </address>
+
+    <address>
+        <strong>Support:</strong>   <a href="mailto:greymilenaj@gmail.com">greymilenaj@gmail.com</a><br />
+
+    </address>
+}
+@section Scripts {
+
+    @Scripts.Render("~/bundles/jqueryval")
+}
